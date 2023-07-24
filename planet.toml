@@ -1,0 +1,36 @@
+[login]
+api_key_file = "/home/jacob/Documents/mining/.planet_key.txt"
+
+[main]
+
+# this must be the name of another table in this file
+project = "mines"
+
+[mines]
+
+path = "/home/jacob/Documents/mining"
+
+# features = "mines"
+existing_fname = "data/download_progress.pickle"
+
+temporal_start = 2019-01-01
+temporal_end = 2023-12-31
+temporal_names = ["main"]
+# offset frequency alias, or "None"
+# https://pandas.pydata.org/docs/user_guide/timeseries.html#offset-aliases
+temporal_freq = "None"
+
+item_type = "PSScene"
+instrument_list = ["PS2.SD"] # PlanetScope Dove-R, imagery from March 2019-April 2022
+# assets = ["visual"]
+
+assets = ["ortho_analytic_4b_sr", "ortho_udm2"] # visual (RGB) raster, cloud mask raster
+product_bundle = "analytic_sr_udm2"
+
+# 0 being no clouds, 100 being entirely clouds
+minimum_percent_usable = 20
+
+use_existing = true
+overwrite_selected =  false
+update_missing = true
+fix_coverage = true

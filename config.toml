@@ -1,0 +1,55 @@
+# path to project
+project_path = "/home/jacob/Documents/mining"
+
+# path to mine footprints dataset, within project path
+mine_footprints_path = "data/global_mining_polygons_v2.gpkg"
+mine_footprints_geojson_path = "data/envelopes.geojson"
+
+# where to store tiles
+tile_dir = "data/tiles"
+
+# countries within which to limit data
+# empty list means global
+# IMPORTANT: check overwrite_envelopes and other vars below
+countries = ["Togo", "Liberia", "South Africa"]
+
+# max number of images (not tiles!) to download per-footprint
+# likely won't end up with footprints * max_images though b/c
+# the same images may be downloaded for nearby footprints
+max_images = 15
+
+# this is the order ID of the Planet imagery to use in tile
+# generation
+# TODO: this should be determined programmatically by reading the pickled download logs
+order_id = "da479d5b-15dd-4876-b1d4-64136f594cd0"
+
+# whether or not to recalculate envelopes (bounding boxes)
+# this should be True if you are changing "countries" above!
+overwrite_envelopes = true
+
+# tiling settings
+tile_dimension = 224
+tile_stride = 320
+tile_percent_usable = 95
+
+# only run model with tiles that have some mine in them
+only_tiles_with_mines = true
+
+# percent of tiles used for...
+# these must add up to 100
+percent_training = 80
+percent_validation = 10
+percent_test = 10
+
+# model architecture
+# see https://smp.readthedocs.io/en/latest/encoders.html
+backbone = "resnet18"
+encoder_weights = "imagenet"
+
+# options for training the model
+batch_size = 30
+num_epochs = 100
+no_better_timeout = 0
+# current best:
+# batch size = 20
+# num_epochs = 
